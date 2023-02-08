@@ -1,6 +1,7 @@
 import React from 'react';
 import { logo } from './assets/icons';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+import { HomePage, PostPage } from './pages';
 
 export const App = () => {
   return (
@@ -16,7 +17,12 @@ export const App = () => {
           Create
         </Link>
       </header>
-      <div className="bg-[#181818] h-72"></div>
+      <main className="min-h-[calc(100vh-90px)]">
+        <Routes>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/create-post" element={<PostPage />}></Route>
+        </Routes>
+      </main>
     </>
   );
 };
