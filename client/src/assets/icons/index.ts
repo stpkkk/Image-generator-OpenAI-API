@@ -1,2 +1,4 @@
 import logo from './logo.svg';
-export { logo };
+import preview from './preview.svg';
+
+export { logo, preview };
