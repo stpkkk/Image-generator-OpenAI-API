@@ -5,8 +5,8 @@ type Props = {
   type?: string;
   name?: string;
   placeholder?: string;
+  handleChange?: any;
   value?: string;
-  handleChange?: () => void;
   isSurpriseMe?: boolean;
   handleSurpriseMe?: () => void;
 };
@@ -38,10 +38,11 @@ export const FormField: React.FC<Props> = ({
       <input
         className="block placeholder:italic placeholder:text-slate-400 bg-[#F0FFFF] w-full border border-slate-300 rounded-md py-2 px-3 mt-1 shadow-sm focus:outline-none focus:border-[#37A051] focus:ring-[#37A051] focus:ring-1 sm:text-md text-[#080808]"
         type={type}
-        value={value}
         name={name}
         placeholder={placeholder}
+        value={value}
         onChange={handleChange}
+        required
       />
     </label>
   </div>

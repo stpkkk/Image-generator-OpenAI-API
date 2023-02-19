@@ -14,7 +14,28 @@ export const PostPage: React.FC = () => {
   const [generateImg, setGenerateImg] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const generateImage = () => {};
+  const generateImage = async () => {
+    if (form.prompt) {
+      try {
+        setGenerateImg(true);
+        const response = await fetch('http://localhost:8080/api/v1/dalle', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: form.prompt }),
+        });
+        const data = await response.json();
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+      } catch (error) {
+        // eslint-disable-next-line no-alert
+        alert('Generating Image Error');
+      } finally {
+        setGenerateImg(false);
+      }
+    } else {
+      // eslint-disable-next-line no-alert
+      alert('Enter the prompt');
+    }
+  };
   const handleSubmit = () => {};
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -46,7 +67,7 @@ export const PostPage: React.FC = () => {
               <FormField
                 labelName="Prompt"
                 type="text"
-                name="name"
+                name="prompt"
                 placeholder="A comic book cover of a superhero wearing headphones"
                 value={form.prompt}
                 handleChange={handleChange}
@@ -54,7 +75,7 @@ export const PostPage: React.FC = () => {
                 handleSurpriseMe={handleSurpriseMe}
               />
             </div>
-            <div className="relative max-w-[200px] mb-8">
+            <div className="relative max-w-[500px] mb-8">
               {form.photo ? (
                 <img
                   src={form.photo}
