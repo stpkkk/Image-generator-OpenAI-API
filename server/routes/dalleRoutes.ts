@@ -1,3 +1,4 @@
+// @ts-nocheck
 import express from "express";
 import * as dotenv from "dotenv";
 import { Configuration, OpenAIApi } from "openai";
@@ -31,7 +32,9 @@ router.route("/").post(async (req, res) => {
     res.status(200).json({ photo: image });
   } catch (error) {
     console.error(error);
-    res.status(500).send("Something went wrong");
+    res
+      .status(500)
+      .send(error?.response.data.error.message || "Something went wrong");
   }
 });
 

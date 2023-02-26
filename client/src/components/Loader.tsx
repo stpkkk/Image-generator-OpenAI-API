@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Loader = () => (
+export const Loader: React.FC = () => (
   <div role="status">
     <svg
       aria-hidden="true"

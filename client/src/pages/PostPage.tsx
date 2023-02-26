@@ -36,7 +36,29 @@ export const PostPage: React.FC = () => {
       alert('Enter the prompt');
     }
   };
-  const handleSubmit = () => {};
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    if (form.prompt && form.photo) {
+      setLoading(true);
+      try {
+        const response = await fetch('http://localhost:8080/api/v1/post', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: form.prompt }),
+        });
+        await response.json();
+        navigate('/');
+      } catch (error) {
+        // eslint-disable-next-line no-alert
+        alert('Share with community Image Error');
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      // eslint-disable-next-line no-alert
+      alert('Enter the prompt or generate an image');
+    }
+  };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -55,67 +77,71 @@ export const PostPage: React.FC = () => {
             DALL-E AI and share them with the community
           </p>
           <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-5 mb-6">
+            <div className="flex flex-col gap-5">
               <FormField
                 labelName="Your Name"
                 type="text"
                 name="name"
-                placeholder="John Doe"
+                placeholder="Ex., john doe"
                 value={form.name}
                 handleChange={handleChange}
               />
+
               <FormField
                 labelName="Prompt"
                 type="text"
                 name="prompt"
-                placeholder="A comic book cover of a superhero wearing headphones"
+                placeholder="An Impressionist oil painting of sunflowers in a purple vase…"
                 value={form.prompt}
                 handleChange={handleChange}
                 isSurpriseMe
                 handleSurpriseMe={handleSurpriseMe}
               />
+
+              <div className="relative bg-[#5e5b5b] text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-80 p-3 h-80 flex justify-center items-center">
+                {form.photo ? (
+                  <img
+                    src={form.photo}
+                    alt={form.prompt}
+                    className="w-full h-full "
+                  />
+                ) : (
+                  <img
+                    src={preview}
+                    alt="preview"
+                    className="w-9/12 h-9/12 object-contain opacity-40"
+                  />
+                )}
+
+                {generateImg && (
+                  <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
+                    <Loader />
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="relative max-w-[500px] mb-8">
-              {form.photo ? (
-                <img
-                  src={form.photo}
-                  alt={form.prompt}
-                  className="w-full h-full object-contain"
-                />
-              ) : (
-                <img
-                  src={preview}
-                  alt="preview"
-                  className="object-contain opacity-20"
-                />
-              )}
-              {generateImg && (
-                <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.3)]">
-                  <Loader />
-                </div>
-              )}
-            </div>
-            <div className="w-full">
+
+            <div className="mt-5 flex gap-5">
               <button
                 type="button"
                 onClick={generateImage}
-                className="bg-[#37A051] mb-4 rounded-md hover:bg-[#babec4] font-medium w-full sm:w-auto px-5 py-3 text-center"
+                className=" text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
               >
                 {generateImg ? 'Generating...' : 'Generate'}
               </button>
-              <div className="w-full">
-                <p className="mb-4 text-[20px] max-w-[1000px] text-[#babec4]">
-                  Once you have created the image you want, you can share it
-                  with others in the community
-                </p>
-                <button
-                  type="submit"
-                  onClick={generateImage}
-                  className="bg-[#8237a0] rounded-md hover:bg-[#babec4] font-medium w-full sm:w-auto px-5 py-3 text-center"
-                >
-                  {loading ? 'Sharing...' : 'Share with the community'}
-                </button>
-              </div>
+            </div>
+
+            <div className="mt-10">
+              <p className="mt-2 text-[#666e75] text-[14px]">
+                ** Once you have created the image you want, you can share it
+                with others in the community **
+              </p>
+              <button
+                type="submit"
+                className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              >
+                {loading ? 'Sharing...' : 'Share with the Community'}
+              </button>
             </div>
           </form>
         </div>
