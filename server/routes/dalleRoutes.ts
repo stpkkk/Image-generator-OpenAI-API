@@ -1,4 +1,3 @@
-// @ts-nocheck
 import express from "express";
 import * as dotenv from "dotenv";
 import { Configuration, OpenAIApi } from "openai";
@@ -30,7 +29,7 @@ router.route("/").post(async (req, res) => {
 
     const image = aiResponse.data.data[0].b64_json;
     res.status(200).json({ photo: image });
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
     res
       .status(500)

@@ -1,1 +1,1 @@
-# MERN-Image-generator-app
+# Image-generator-app

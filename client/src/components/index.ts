@@ -1,3 +1,5 @@
-export { Card } from './Card';
 export { Loader } from './Loader';
-export { FormField } from './FormField';
+export { Input } from './Input';
+export { Header } from './Header';
+export { ImageSection } from './ImageSection';
+export { InputSection } from './InputSection';
