@@ -45,6 +45,6 @@ export const surpriseMePrompts = [
   'Synthwave aeroplane',
   'A man wanders through the rainy streets of Tokyo, with bright neon signs, 50mm',
   'A Space Shuttle flying above Cape Town, digital art',
-  'tyriel archangel, king shamn , avatar , swords , angel wings . 4k',
+  'tyriel archangel, king shamn , avatar , swords , angel wings',
   'Portrait In the style of Rembrandt Harmenszoon van Rijn oil painting',
 ];

@@ -32,7 +32,6 @@ export const Input: React.FC<Props> = ({
       placeholder={placeholder}
       value={value}
       onChange={handleChange}
-      required
     />
   </div>
 );

@@ -9,7 +9,7 @@ type Props = {
   generatingImg: boolean;
 };
 
-export const InputSection: React.FC<Props> = ({
+export const SectionInput: React.FC<Props> = ({
   prompt,
   generatingImg,
   generateImage,

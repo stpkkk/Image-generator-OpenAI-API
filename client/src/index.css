@@ -9,15 +9,8 @@
 body {
   font-weight: 400;
   font-style: normal;
-  background-color: rgb(20, 20, 20);
+  background-color: #181818;
   color: azure;
-}
-
-@media screen and (min-width: 480px) {
-  .card:nth-child(7n + 1) {
-    grid-column: auto/span 2;
-    grid-row: auto/span 2;
-  }
 }
 
 .prompt::-webkit-scrollbar {
