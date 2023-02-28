@@ -31,7 +31,7 @@
 
 <div >
 <p>Prewie:</p>
-<img src="https://github.com/stpkkk/Image-generator-OpenAI-API/blob/master/prewie-image-generator.png" alt="prewie">
+<img src="https://github.com/stpkkk/Image-generator-OpenAI-API/blob/master/preview-image-generator.png" alt="prewie">
 </div>
 <div >
 </details>
