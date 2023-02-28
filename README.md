@@ -32,6 +32,7 @@
 <div >
 <p>Prewie:</p>
 <img src="https://github.com/stpkkk/Image-generator-OpenAI-API/blob/master/preview-image-generator.png" alt="prewie">
+<img src="https://github.com/stpkkk/lamborghini-super-trofeo/blob/master/prewie-lamborghini-super-trofeo.png" alt="prewie">
 </div>
 <div >
 </details>
