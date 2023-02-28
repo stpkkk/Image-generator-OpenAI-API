@@ -27,7 +27,7 @@ export const App: React.FC = () => {
     try {
       setGeneratingImg(true);
       const response = await fetch(
-        'https://stpk-image-generator.onrender.com/api/v1/dalle',
+        'https://stpkk-image-generator.onrender.com/api/v1/dalle',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
